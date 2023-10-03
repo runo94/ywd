@@ -587,7 +587,7 @@ body#tinymce.wp-editor .clearfix, body#tinymce.wp-editor .cf {
   zoom: 1;
 }
 body#tinymce.wp-editor .clearfix:before, body#tinymce.wp-editor .clearfix:after, body#tinymce.wp-editor .cf:before, body#tinymce.wp-editor .cf:after {
-  content: "";
+  content: none;
   display: table;
 }
 body#tinymce.wp-editor .clearfix:after, body#tinymce.wp-editor .cf:after {

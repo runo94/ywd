@@ -486,7 +486,7 @@ table {
 // Contain floats: nicolasgallagher.com/micro-clearfix-hack/
 .clearfix, .cf {
   zoom: 1;
-    &:before, &:after { content: ""; display: table; }
+    &:before, &:after { content: none; display: table; }
     &:after { clear: both; }
 }
 

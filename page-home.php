@@ -37,21 +37,23 @@ $new_post_loop = new WP_Query($args);
                             <button class="arrow spin" data-type="ywd_predictions">
                                 <img src="<?php home_url() ?>/wp-content/uploads/2023/09/Asset-1.svg" />
                             </button>
-                            <img class="wheel_img" src="<?php home_url() ?>wp-content/uploads/2023/09/wheel.svg">
+                            <img class="wheel_img" src="<?php home_url() ?>wp-content/uploads/2023/10/wheel.svg">
                         </div>
                     </div>
                 </div>
                 <div id="ywd_predictions">
                     <div class="roulette">
                         <div class="wheel">
-                            <button class="arrow spin" data-type="ywd_predictions">
+                            <button class="arrow spin count" data-type="ywd_predictions">
                                 <img src="<?php home_url() ?>/wp-content/uploads/2023/09/Asset-1.svg" />
                             </button>
-                            <img class="wheel_img" src="<?php home_url() ?>wp-content/uploads/2023/09/wheel.svg">
+                            <img class="wheel_img" style="filter: blur(0px); transform: rotate(90deg);" src="<?php home_url() ?>wp-content/uploads/2023/10/wheel.svg">
                         </div>
                     </div>
                 </div>
             </div>
+
+            
             <?php
             // if ($new_post_loop->have_posts()):
             //     while ($new_post_loop->have_posts()):
