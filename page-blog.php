@@ -33,46 +33,21 @@ $new_post_loop = new WP_Query($args);
                 while ($new_post_loop->have_posts()):
                     $new_post_loop->the_post();
                     ?>
-                    <article id="post-<?php the_ID(); ?>" <?php post_class('cf'); ?> role="article" itemscope
-                        itemtype="http://schema.org/BlogPosting">
+                    <a href="<?php the_permalink() ?>">
+                        <article id="post-<?php the_ID(); ?>" <?php post_class('cf'); ?>
+                            style="background-image:url(<?php echo get_the_post_thumbnail_url() ?>)" role="article" itemscope
+                            itemtype="http://schema.org/BlogPosting">
+                            <div class="info">
+                                <h3 class="page-title">
+                                    <?php the_title(); ?>
+                                </h3>
 
-                        <header class="article-header">
-
-                            <h3 class="page-title">
-                                <a href="<?php the_permalink() ?>"><?php the_title(); ?></a>
-                            </h3>
-
-                            <p class="byline vcard">
-                                <?php printf(__('Posted <time class="updated" datetime="%1$s" itemprop="datePublished">%2$s</time> by <span class="author">%3$s</span>', 'ywdtheme'), get_the_time('Y-m-j'), get_the_time(get_option('date_format')), get_the_author_link(get_the_author_meta('ID'))); ?>
-                            </p>
-
-
-                        </header>
-
-                        <section class="entry-content cf" itemprop="articleBody">
-                            <?php
-                            
-                            the_content();
-                            
-                            wp_link_pages(
-                                array(
-                                    'before' => '<div class="page-links"><span class="page-links-title">' . __('Pages:', 'ywdtheme') . '</span>',
-                                    'after' => '</div>',
-                                    'link_before' => '<span>',
-                                    'link_after' => '</span>',
-                                ));
-                            ?>
-                        </section>
-
-
-                        <footer class="article-footer">
-
-                            <?php the_tags('<p class="tags"><span class="tags-title">' . __('Tags:', 'ywdtheme') . '</span> ', ', ', '</p>'); ?>
-
-                        </footer>
-
-                    </article>
-
+                                <p class="byline vcard">
+                                    <?php printf(__('Posted <time class="updated" datetime="%1$s" itemprop="datePublished">%2$s</time>', 'ywdtheme'), get_the_time('Y-m-j'), get_the_time(get_option('date_format')), get_the_author_link(get_the_author_meta('ID'))); ?>
+                                </p>
+                            </div>
+                        </article>
+                    </a>
                 <?php endwhile; else: ?>
 
                 <article id="post-not-found" class="hentry cf">
