@@ -1394,3 +1394,15 @@ FOOTER STYLES
 
 	}
 }
+
+.day_quote {
+	max-width: 320px;
+	border-radius: 16px;
+	border: 1px solid #f4b5bb;
+	padding: 16px;
+
+	h2 {
+		border-bottom: 1px solid #f4b5bb;
+		margin-top: 0;
+	}
+}

@@ -2286,6 +2286,17 @@ FOOTER STYLES
   transition: all ease 0.2s;
 }
 
+.day_quote {
+  max-width: 320px;
+  border-radius: 16px;
+  border: 1px solid #f4b5bb;
+  padding: 16px;
+}
+.day_quote h2 {
+  border-bottom: 1px solid #f4b5bb;
+  margin-top: 0;
+}
+
 /*********************
 LARGER MOBILE DEVICES
 This is for devices like the Galaxy Note or something that's

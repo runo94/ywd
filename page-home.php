@@ -13,10 +13,17 @@
 */
 
 $args = array(
-    'post_type' => array('custom_type', 'custom_post_type'),
-    'post_status' => 'publish',
+    'post_type' => array('custom_type'),
+    'posts_per_page' => 1,
+    'tax_query' => array(
+        array(
+            'taxonomy' => 'category',
+            'field' => 'slug',
+            'terms' => array('quotes'),
+        ),
+    ),
 );
-$new_post_loop = new WP_Query($args);
+$quote = get_posts($args);
 ?>
 
 <?php get_header(); ?>
@@ -24,7 +31,7 @@ $new_post_loop = new WP_Query($args);
 <div id="content">
 
     <div id="inner-content" class="wrap cf">
-        
+
         <main id="main" class="cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
             <div class="wheels">
                 <div class="controls">
@@ -47,19 +54,20 @@ $new_post_loop = new WP_Query($args);
                             <button class="arrow spin count" data-type="ywd_predictions">
                                 <img src="<?php home_url() ?>/wp-content/uploads/2023/09/Asset-1.svg" />
                             </button>
-                            <img class="wheel_img" style="filter: blur(0px); transform: rotate(90deg);" src="<?php home_url() ?>wp-content/uploads/2023/10/wheel.svg">
+                            <img class="wheel_img" style="filter: blur(0px); transform: rotate(90deg);"
+                                src="<?php home_url() ?>wp-content/uploads/2023/10/wheel.svg">
                         </div>
                     </div>
                 </div>
             </div>
-
-            
-            <?php
-            // if ($new_post_loop->have_posts()):
-            //     while ($new_post_loop->have_posts()):
-            //         $new_post_loop->the_post();
-            // endwhile; endif; ?>
-
+            <?php if(!empty($quote)): ?>
+            <div class="day_quote">
+                <h2>Quote of the day:</h2>
+                <h3>
+                    <?php echo $quote[0]->post_title ?>
+                </h3>
+            </div>
+            <?php endif; ?>
         </main>
 
     </div>
@@ -84,49 +92,50 @@ $new_post_loop = new WP_Query($args);
 
     const container = document.querySelector('.fireworks')
     const fireworks = new Fireworks.default(container, {
-  autoresize: true,
-  opacity: 0.5,
-  acceleration: 1.05,
-  friction: 0.97,
-  gravity: 1.5,
-  particles: 50,
-  traceLength: 3,
-  traceSpeed: 10,
-  explosion: 5,
-  intensity: 30,
-  flickering: 50,
-  lineStyle: 'round',
-  hue: {
-    min: 0,
-    max: 360
-  },
-  delay: {
-    min: 30,
-    max: 60
-  },
-  rocketsPoint: {
-    min: 50,
-    max: 50
-  },
-  lineWidth: {
-    explosion: {
-      min: 1,
-      max: 3
-    },
-    trace: {
-      min: 1,
-      max: 2
-    }
-  },
-  brightness: {
-    min: 50,
-    max: 80
-  },
-  decay: {
-    min: 0.015,
-    max: 0.03
-  },})
-    
+        autoresize: true,
+        opacity: 0.5,
+        acceleration: 1.05,
+        friction: 0.97,
+        gravity: 1.5,
+        particles: 50,
+        traceLength: 3,
+        traceSpeed: 10,
+        explosion: 5,
+        intensity: 30,
+        flickering: 50,
+        lineStyle: 'round',
+        hue: {
+            min: 0,
+            max: 360
+        },
+        delay: {
+            min: 30,
+            max: 60
+        },
+        rocketsPoint: {
+            min: 50,
+            max: 50
+        },
+        lineWidth: {
+            explosion: {
+                min: 1,
+                max: 3
+            },
+            trace: {
+                min: 1,
+                max: 2
+            }
+        },
+        brightness: {
+            min: 50,
+            max: 80
+        },
+        decay: {
+            min: 0.015,
+            max: 0.03
+        },
+    })
+
     jQuery(document).ready(function ($) {
 
         const getResult = (req_type) => {
